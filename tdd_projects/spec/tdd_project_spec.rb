@@ -22,6 +22,8 @@ RSpec.describe Array do
         end
     end
 
+    let(:second_place_check) {[1, -2, 2, 0, 2]}
+
     describe "#two_sum" do
         before(:each) do
             array.push(-1, 0, 2, -2, 1, 1)
@@ -39,9 +41,36 @@ RSpec.describe Array do
         it "should order pairs with ascending index values" do
             sums = array.two_sum
             first_index = sums.map { |ele| ele[0] }
-            second_index = sums.map { |ele| ele[1] }
             expect(first_index).to eq(first_index.sort)
-            expect(second_index).to eq(second_index.sort)
+            expect(second_place_check.two_sum).to eq([[1, 2], [1, 4]])
         end
     end
+
+    describe "#my_transpose" do
+        
+        before(:each) do 
+            array.push([0, 1, 2], [3, 4, 5], [6, 7, 8])
+        end
+        let(:array_1) {[[1, 2], [3, 4, 5]]}
+        let(:array_2) {[["a", "b"], ["c", "d"]]}
+
+        it "should return a 2D array" do
+            expect(array.my_transpose).to be_a(Array)
+            expect(array.my_transpose).to all(be_a(Array))
+        end
+
+        it "should raise an error if the input array is not square" do
+            expect {array_1.my_transpose}.to raise_error(ArgumentError)
+        end
+
+        it "should not use the built-in #transpose method" do 
+            expect(array).to_not receive(:transpose)
+        end
+
+        it "should transpose the array" do
+            expect(array_2.my_transpose).to eq([["a", "c"], ["b", "d"]])
+            expect(array.my_transpose).to eq([[0, 3, 6], [1, 4, 7], [2, 5, 8]])
+        end
+    end
+
 end
