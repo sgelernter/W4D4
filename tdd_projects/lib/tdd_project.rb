@@ -29,5 +29,20 @@ class Array
         transposed   
     end
 
+    def stock_picker
+        return nil if self.empty?
+        day_1 = nil
+        day_2 = nil
+        max_diff = 0
 
+        (0...self.length).each do |i|
+            (0...self.length).each do |j|
+                if j > i && self[j] - self[i] > max_diff
+                    max_diff = self[j] - self[i]
+                    day_1, day_2 = i, j
+                end
+            end
+        end
+        [day_1, day_2]    
+    end
 end
