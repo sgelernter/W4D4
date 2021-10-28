@@ -75,16 +75,22 @@ RSpec.describe Array do
 
     describe "#stock_picker" do
 
-        it "should return the most profitable pair of days to buy, then sell"
+        let(:array_1) {[100, 200, 250, 325]}
+        let(:array_2) {[100, 50, 75, 25, 90]}
+        let(:array_3) {[100, 50, 75, 25, 50]}
+
+        it "should return the most profitable pair of days to buy, then sell" do 
+            expect(array_1.stock_picker).to eq([0, 3])
+            expect(array_2.stock_picker).to eq([1, 4])
+        end
 
         it "should not return a pair that is out of order"
 
-        it "should return nil if given an empty array"
+        it "should return nil if given an empty array" do
+            expect([].stock_picker).to eq(nil)
+        end
 
-        
-
-    
-
+        it "should take the earlier pair of days in the event of a tie"
 
     end
 
