@@ -17,5 +17,4 @@ class Towers
         self[end_box] << self[start_box].pop
         self.boxes
     end
-
 end

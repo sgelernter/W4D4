@@ -19,10 +19,15 @@ RSpec.describe Towers do
     end
 
     describe "#won?" do
-        it "should return true when all three rings are stacked correctly in the center box"
+        let(:won) {[[], ["_____", "___", "_"], []]}
+        it "should return true when all three rings are stacked correctly in the center box" do
+            game.boxes = won
+            expect(game.won?).to be true
+        end
 
         it "should return false when the game has not yet been won"
-
+            game.boxes = one_move
+            expect(game.won?).to be false
+        end         
     end
-
 end
