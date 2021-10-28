@@ -13,8 +13,8 @@ RSpec.describe Array do
         end
 
         it "should not return any duplicate elements" do 
-            expect(array.my_uniq).to contain_exactly(1, 2, 3, 4, 5, 6, 7, 8)
-            # expect(array.my_uniq.none? {|ele| array.my_uniq.count(ele) > 1} ).to be true
+            # expect(array.my_uniq).to contain_exactly(1, 2, 3, 4, 5, 6, 7, 8)
+            expect(array.my_uniq.none? {|ele| array.my_uniq.count(ele) > 1} ).to be true
         end
 
         it "should return a new array" do
@@ -71,6 +71,21 @@ RSpec.describe Array do
             expect(array_2.my_transpose).to eq([["a", "c"], ["b", "d"]])
             expect(array.my_transpose).to eq([[0, 3, 6], [1, 4, 7], [2, 5, 8]])
         end
+    end
+
+    describe "#stock_picker" do
+
+        it "should return the most profitable pair of days to buy, then sell"
+
+        it "should not return a pair that is out of order"
+
+        it "should return nil if given an empty array"
+
+        
+
+    
+
+
     end
 
 end

@@ -16,5 +16,18 @@ class Array
         pairs
     end
 
+    def my_transpose
+        length = self.length
+        raise ArgumentError if self.any? { |subarray| subarray.length != length }
+        transposed = Array.new(length){Array.new(length)}
+
+        (0...length).each do |i|
+            (0...length).each do |j|
+                transposed[j][i] = self[i][j]
+            end
+        end
+        transposed   
+    end
+
 
 end
