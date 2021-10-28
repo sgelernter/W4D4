@@ -1,17 +1,20 @@
 require "towers"
 RSpec.describe Towers do
     subject(:game) {Towers.new}
+    let(:one_move) {[["_____", "___"], ["_"], []]}
+    let(:stack_move) {[["_____"], ["_", "___"], []]}
+
 
     describe "#move" do
-        it "should accept a start box and an end box"
 
-        it "should move the top ring from one box to another box"
+        it "should move the top ring from one box to another box and return the new positions" do
+            expect(game.move(0, 1)).to eq(one_move)
+        end
 
-        it "should only move one ring at a time"
-
-        it "should place the ring moved to the top of the stack in new box"
-
-        it "should print the array with the rings in the new position"
+        it "should place the ring moved to the top of the stack in new box" do 
+            game.move(0,1)
+            expect(game.move(0,1)).to eq(stack_move)
+        end
 
     end
 
@@ -21,6 +24,5 @@ RSpec.describe Towers do
         it "should return false when the game has not yet been won"
 
     end
-
 
 end

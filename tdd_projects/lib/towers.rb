@@ -5,13 +5,17 @@ class Towers
         @boxes = [["_____", "___", "_"], [], []]
     end
 
-    def [](pos)
-        box, place = pos
-        @boxes[box][place]
+    def [](box)
+        @boxes[box]
     end
 
-    def []=(pos, value)
-        box, place = pos
-        @boxes[box][place] = value
+    def []=(box, value)
+        @boxes[box] = value
     end
+
+    def move(start_box, end_box)
+        self[end_box] << self[start_box].pop
+        self.boxes
+    end
+
 end
